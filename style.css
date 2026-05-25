@@ -253,6 +253,39 @@ img { max-width: 100%; height: auto; display: block; }
 }
 .figure .credit { display: block; color: var(--accent); font-style: italic; }
 
+/* ---- Photo gallery (subpages) ---- */
+.photo-gallery {
+  margin: 38px 0 8px;
+  padding-top: 26px;
+  border-top: 2px solid var(--accent);
+}
+.photo-gallery h2 { margin: 0 0 6px; font-size: 1.5rem; }
+.photo-gallery .gallery-note {
+  font-style: italic;
+  color: #5a4a32;
+  font-size: 0.9rem;
+  margin: 0 0 22px;
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+.gallery-item {
+  margin: 0;
+  background: #fffdf7;
+  border: 1px solid var(--line);
+  padding: 10px;
+  box-shadow: 0 3px 10px var(--shadow);
+}
+.gallery-item .placeholder-img { height: 180px; }
+.gallery-item figcaption {
+  font-size: 0.78rem;
+  color: #5a4a32;
+  padding: 8px 2px 2px;
+}
+.gallery-item .credit { color: var(--accent); font-style: italic; }
+
 .coming-soon {
   background: #f5efe1;
   border-left: 4px solid var(--accent);
