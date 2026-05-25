@@ -139,14 +139,23 @@
     // Build stop cards
     var grid = document.getElementById('stops-grid');
     stops.forEach(function (s) {
+      var sid = s.file.replace('.html', '');
+      var cover = 'photos/' + sid + '.jpg';
       var a = document.createElement('a');
       a.href = s.file;
       a.className = 'stop-card';
       a.style.textDecoration = 'none';
-      a.innerHTML = '<span class="num">Stop No. ' + s.n + '</span>' +
-        '<h3>' + s.name + '</h3>' +
-        '<p class="addr">' + s.addr + '</p>' +
-        '<span class="card-link">Read the article &rsaquo;</span>';
+      a.innerHTML =
+        '<div class="card-cover">' +
+          '<span class="cover-ph">Photo coming soon</span>' +
+          '<img class="cover-photo" src="' + cover + '" alt="' + s.name + '" loading="lazy" onerror="this.remove()">' +
+        '</div>' +
+        '<div class="card-body">' +
+          '<span class="num">Stop No. ' + s.n + '</span>' +
+          '<h3>' + s.name + '</h3>' +
+          '<p class="addr">' + s.addr + '</p>' +
+          '<span class="card-link">Read the article &rsaquo;</span>' +
+        '</div>';
       grid.appendChild(a);
     });
   </script>
