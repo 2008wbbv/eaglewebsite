@@ -360,7 +360,55 @@ img { max-width: 100%; height: auto; display: block; }
   font-style: italic;
   padding: 10px;
 }
+.qr-img {
+  width: 170px;
+  height: 170px;
+  margin: 0 auto 12px;
+  display: block;
+  border: 1px solid var(--line);
+  background: #fffdf7;
+  padding: 6px;
+}
 .qr-box p { font-size: 0.78rem; color: #5a4a32; text-align: center; margin: 0; }
+
+/* ---- Prev / Next stop navigation ---- */
+.stop-nav {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: #f5efe1;
+}
+.stop-nav .container {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 18px;
+  padding-bottom: 18px;
+}
+.stop-nav a {
+  font-family: "Playfair Display", serif;
+  font-size: 0.92rem;
+  color: var(--rust);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.stop-nav a span {
+  display: block;
+  font-size: 0.68rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.stop-nav .sn-prev { text-align: left; flex: 1; }
+.stop-nav .sn-next { text-align: right; flex: 1; }
+.stop-nav .sn-map {
+  align-self: center;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: 0.72rem;
+  padding: 0 6px;
+}
 
 /* ---- History page ---- */
 .history-article {
@@ -428,4 +476,9 @@ img { max-width: 100%; height: auto; display: block; }
 
 @media (max-width: 360px) {
   .gallery-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .stop-nav .container { flex-wrap: wrap; }
+  .stop-nav .sn-map { order: 3; flex-basis: 100%; text-align: center; margin-top: 6px; }
 }
