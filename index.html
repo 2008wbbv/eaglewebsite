@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Millis Historic Trail &middot; Millis, Massachusetts</title>
+<meta name="description" content="A walking trail through ten historic sites in Millis, Massachusetts. An Eagle Scout Service Project by Ben Vaccaro, Troop 15.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Libre+Baskerville:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-inner">
+      <a href="index.html" class="brand">Millis Historic Trail<small>Millis, Massachusetts</small></a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="#map">Trail Map</a>
+        <a href="#stops">Stops</a>
+        <a href="history.html">Town History</a>
+        <a href="#about">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container narrow">
+      <div class="eyebrow">A Walking Tour Through History</div>
+      <h1>Millis Historic Trail</h1>
+      <hr class="rule">
+      <p class="lede">Ten landmarks tracing the story of a New England town &mdash; from its
+        colonial meeting houses and the battles of King Philip's War to the mills and railroads
+        that built modern Millis.</p>
+      <div class="meta" style="margin-top:24px;">
+        <a href="#map" class="btn">Explore the Map</a>
+        <a href="#stops" class="btn btn-outline" style="margin-left:10px;">View the Stops</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="map-section" id="map-section">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="map">The Trail Map</h2>
+        <p>Click any marker to read about the site.</p>
+      </div>
+      <div id="map"></div>
+    </div>
+  </section>
+
+  <section class="stops-section" id="stops">
+    <div class="container">
+      <div class="section-head">
+        <h2>The Ten Stops</h2>
+        <p>Each stop tells a chapter of the Millis story.</p>
+      </div>
+      <div class="stops-grid" id="stops-grid"></div>
+    </div>
+  </section>
+
+  <section class="about-section" id="about">
+    <div class="container narrow">
+      <div class="section-head">
+        <h2>About This Project</h2>
+      </div>
+      <p>The Millis Historic Trail is an Eagle Scout Service Project created by
+        <strong>Ben Vaccaro</strong> of <strong>Troop 15</strong>, Boy Scouts of America. The trail
+        connects ten of the most significant historic sites in Millis, Massachusetts, inviting
+        residents and visitors to walk through more than three centuries of local history.</p>
+      <p>Once part of Dedham and later Medfield, the land that became Millis was settled by pioneers
+        drawn to the fertile banks of the Charles River. Known for generations as East Medway, the
+        community split from West Medway to become the independent town of Millis in 1885, named for
+        railroad man and town founder Lansing Millis.</p>
+      <p>Each stop on the trail features a QR code linking to its page on this site, so visitors can
+        read the history of a site while standing before it. To learn more about the town's broader
+        history, visit the <a href="history.html">Town History</a> page.</p>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="ft-name">Millis Historic Trail</div>
+    <p>An Eagle Scout Service Project by <span class="accent">Ben Vaccaro</span></p>
+    <p>Boy Scouts of America &middot; <span class="accent">Troop 15</span> &middot; Millis, Massachusetts</p>
+    <p><a href="#map">Return to the Trail Map</a></p>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script>
+    var stops = [
+      { n: 1,  name: "Church of Christ",        file: "church.html",    addr: "Main Street, Millis, MA",     lat: 42.1651, lng: -71.3602 },
+      { n: 2,  name: "John Partridge House",    file: "partridge.html", addr: "Village Street, Millis, MA",  lat: 42.1589, lng: -71.3571 },
+      { n: 3,  name: "Richardson's Tavern",     file: "tavern.html",    addr: "Exchange Street, Millis, MA", lat: 42.1634, lng: -71.3499 },
+      { n: 4,  name: "Prospect Hill Cemetery",  file: "cemetery.html",  addr: "Prospect Street, Millis, MA", lat: 42.1578, lng: -71.3644 },
+      { n: 5,  name: "Rockville Chapel",        file: "rockville.html", addr: "Rockville, Millis, MA",       lat: 42.1432, lng: -71.3574 },
+      { n: 6,  name: "Train Station",           file: "station.html",   addr: "Main Street, Millis, MA",     lat: 42.1648, lng: -71.3598 },
+      { n: 7,  name: "Ellice School",           file: "ellice.html",    addr: "Ellice, Millis, MA",          lat: 42.1521, lng: -71.3574 },
+      { n: 8,  name: "Oak Grove Farm",          file: "oakgrove.html",  addr: "Oak Grove, Millis, MA",       lat: 42.1587, lng: -71.3498 },
+      { n: 9,  name: "South End Pond",          file: "southend.html",  addr: "South End, Millis, MA",       lat: 42.1401, lng: -71.3521 },
+      { n: 10, name: "Peter Adams House",       file: "adams.html",     addr: "Main Street, Millis, MA",     lat: 42.1659, lng: -71.3601 }
+    ];
+
+    var map = L.map('map').setView([42.1560, -71.3570], 14);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    var bounds = [];
+    stops.forEach(function (s) {
+      function pin(num) {
+        return L.divIcon({
+          className: 'trail-pin',
+          html: '<div style="background:#8b3a1a;color:#faf6ed;width:30px;height:30px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);border:2px solid #c49a2a;box-shadow:0 2px 5px rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-weight:bold;font-size:13px;"><span style="transform:rotate(45deg);">' + num + '</span></div>',
+          iconSize: [30, 30], iconAnchor: [15, 30], popupAnchor: [0, -30]
+        });
+      }
+      var m = L.marker([s.lat, s.lng], { icon: pin(s.n) }).addTo(map);
+      m.bindPopup('<div style="text-align:center;font-family:Georgia,serif;">' +
+        '<strong style="font-size:1.05rem;">' + s.name + '</strong><br>' +
+        '<span style="font-size:.82rem;color:#5a4a32;">' + s.addr + '</span><br>' +
+        '<a href="' + s.file + '" style="display:inline-block;margin-top:8px;color:#8b3a1a;font-weight:bold;">Read the article &rsaquo;</a></div>');
+      bounds.push([s.lat, s.lng]);
+    });
+    map.fitBounds(bounds, { padding: [40, 40] });
+
+    // Build stop cards
+    var grid = document.getElementById('stops-grid');
+    stops.forEach(function (s) {
+      var a = document.createElement('a');
+      a.href = s.file;
+      a.className = 'stop-card';
+      a.style.textDecoration = 'none';
+      a.innerHTML = '<span class="num">Stop No. ' + s.n + '</span>' +
+        '<h3>' + s.name + '</h3>' +
+        '<p class="addr">' + s.addr + '</p>' +
+        '<span class="card-link">Read the article &rsaquo;</span>';
+      grid.appendChild(a);
+    });
+  </script>
+</body>
+</html>
